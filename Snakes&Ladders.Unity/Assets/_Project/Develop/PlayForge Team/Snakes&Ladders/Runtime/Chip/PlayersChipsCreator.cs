@@ -6,13 +6,8 @@ namespace PlayForge_Team.SnakesAndLadders.Runtime.Runtime.Chip
     public sealed class PlayersChipsCreator : MonoBehaviour
     {
         [SerializeField] private Sprite[] playerChipSprites = Array.Empty<Sprite>();
+        [SerializeField] private PlayerChip playerChipPrefab;
         private PlayerChip[] _playersChips;
-        private PlayerChip _playerChipPrefab;
-        
-        private void Start()
-        {
-            _playerChipPrefab = Resources.Load<PlayerChip>("Prefabs/Chips/Chip");
-        }
         
         public PlayerChip[] SpawnPlayersChips(int count)
         {
@@ -37,7 +32,7 @@ namespace PlayForge_Team.SnakesAndLadders.Runtime.Runtime.Chip
             }
 
             var tr = transform;
-            var newPlayerChip = Instantiate(_playerChipPrefab, tr.position, tr.rotation);
+            var newPlayerChip = Instantiate(playerChipPrefab, tr.position, tr.rotation);
             newPlayerChip.SetSprite(sprite);
             return newPlayerChip;
         }

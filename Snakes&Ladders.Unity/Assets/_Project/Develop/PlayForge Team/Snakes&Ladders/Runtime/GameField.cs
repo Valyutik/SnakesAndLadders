@@ -4,6 +4,8 @@ namespace PlayForge_Team.SnakesAndLadders.Runtime.Runtime
 {
     public sealed class GameField : MonoBehaviour
     {
+        public int CellsCount => cellsCount;
+        
         [SerializeField] private Transform firstCellPoint;
         [SerializeField] private Vector2 cellSize;
         [SerializeField] private int cellsCount = 100;
