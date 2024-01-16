@@ -10,5 +10,10 @@ namespace PlayForge_Team.SnakesAndLadders.Runtime.Runtime.Chip
             var spriteRenderer = GetComponent<SpriteRenderer>();
             spriteRenderer.sprite = sprite;
         }
+        
+        public void SetPosition(Vector2 position)
+        {
+            transform.position = position;
+        }
     }
 }
