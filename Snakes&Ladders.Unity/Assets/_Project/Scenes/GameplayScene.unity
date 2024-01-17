@@ -1482,7 +1482,7 @@ MonoBehaviour:
   gameField: {fileID: 23489291}
   gameScreenGo: {fileID: 892945422}
   gameEndScreenGo: {fileID: 10739752}
-  winText: {fileID: 957323251}
+  winText: {fileID: 1949630394}
   throwButton: {fileID: 1833421987}
 --- !u!4 &1195336664
 Transform:
