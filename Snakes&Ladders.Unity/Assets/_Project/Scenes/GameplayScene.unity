@@ -1149,6 +1149,7 @@ Transform:
   - {fileID: 1195336664}
   - {fileID: 1103291678}
   - {fileID: 1194866010}
+  - {fileID: 1188918864}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1074197712
@@ -1349,6 +1350,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1171675004}
   m_CullTransparentMesh: 1
+--- !u!1 &1188918863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1188918864}
+  - component: {fileID: 1188918865}
+  m_Layer: 0
+  m_Name: PlayersChipsAnimator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1188918864
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188918863}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1046230927}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1188918865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188918863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9943cde3704f4f32a074c20afbcb59ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameStateChanger: {fileID: 1195336663}
+  GameField: {fileID: 23489291}
+  CellMoveDuration: 0.3
 --- !u!1 &1194866009
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,6 +1483,7 @@ MonoBehaviour:
   gameScreenGo: {fileID: 892945422}
   gameEndScreenGo: {fileID: 10739752}
   winText: {fileID: 957323251}
+  throwButton: {fileID: 1833421987}
 --- !u!4 &1195336664
 Transform:
   m_ObjectHideFlags: 0
@@ -2150,6 +2199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c828447ce074f56bbd9ea19f1df0fc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playersChipsAnimator: {fileID: 1188918865}
   gameField: {fileID: 23489291}
   transitionSettings: {fileID: 1194866011}
 --- !u!4 &2024914991

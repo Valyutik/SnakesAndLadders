@@ -2,6 +2,7 @@
 using PlayForge_Team.SnakesAndLadders.Runtime.Runtime.Chip;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 namespace PlayForge_Team.SnakesAndLadders.Runtime.Runtime
 {
@@ -15,27 +16,19 @@ namespace PlayForge_Team.SnakesAndLadders.Runtime.Runtime
         [SerializeField] private GameObject gameScreenGo;
         [SerializeField] private GameObject gameEndScreenGo;
         [SerializeField] private TMP_Text winText;
+        [SerializeField] private Button throwButton;
         
         private void Start()
         {
             FirstStartGame();
+            SetThrowButtonInteractable(true);
         }
         
         public void DoPlayerTurn(int steps)
         {
             var currentPlayerId = playersTurnChanger.GetCurrentPlayerId();
             playersChipsMover.MoveChip(currentPlayerId, steps);
-            var isPlayerFinished = playersChipsMover.CheckPlayerFinished(currentPlayerId);
-
-            if (isPlayerFinished)
-            {
-                SetWinText(currentPlayerId);
-                EndGame();
-            }
-            else
-            {
-                playersTurnChanger.MovePlayerTurn();
-            }
+            SetThrowButtonInteractable(false);
         }
         
         public void RestartGame()
@@ -44,10 +37,31 @@ namespace PlayForge_Team.SnakesAndLadders.Runtime.Runtime
             StartGame();
         }
         
+        public void ContinueGameAfterChipAnimation()
+        {
+            var currentPlayerId = playersTurnChanger.GetCurrentPlayerId();
+            var isPlayerFinished = playersChipsMover.CheckPlayerFinished(currentPlayerId);
+            if (isPlayerFinished)
+            {
+                SetWinText(currentPlayerId);
+                EndGame();
+            }
+            else
+            {
+                playersTurnChanger.MovePlayerTurn();
+                SetThrowButtonInteractable(true);
+            }
+        }
+        
         private void FirstStartGame()
         {
             gameField.FillCellsPositions();
             StartGame();
+        }
+        
+        private void SetThrowButtonInteractable(bool value)
+        {
+            throwButton.interactable = value;
         }
 
         private void StartGame()
