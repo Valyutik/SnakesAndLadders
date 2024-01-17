@@ -23,6 +23,19 @@ namespace PlayForge_Team.SnakesAndLadders.Runtime.Runtime.Chip
             }
             return _playersChips;
         }
+        
+        public void Clear()
+        {
+            DestroyPlayersChips();
+        }
+
+        private void DestroyPlayersChips()
+        {
+            foreach (var t in _playersChips)
+            {
+                Destroy(t.gameObject);
+            }
+        }
 
         private PlayerChip SpawnPlayerChip(Sprite sprite)
         {

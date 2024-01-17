@@ -1,6 +1,7 @@
-﻿using PlayForge_Team.SnakesAndLadders.Runtime.Runtime.Chip;
-using PlayForge_Team.SnakesAndLadders.Runtime.Runtime.Players;
+﻿using PlayForge_Team.SnakesAndLadders.Runtime.Runtime.Players;
+using PlayForge_Team.SnakesAndLadders.Runtime.Runtime.Chip;
 using UnityEngine;
+using TMPro;
 
 namespace PlayForge_Team.SnakesAndLadders.Runtime.Runtime
 {
@@ -11,25 +12,66 @@ namespace PlayForge_Team.SnakesAndLadders.Runtime.Runtime
         [SerializeField] private PlayersTurnChanger playersTurnChanger;
         [SerializeField] private PlayersChipsMover playersChipsMover;
         [SerializeField] private GameField gameField;
+        [SerializeField] private GameObject gameScreenGo;
+        [SerializeField] private GameObject gameEndScreenGo;
+        [SerializeField] private TMP_Text winText;
+        
+        private void Start()
+        {
+            FirstStartGame();
+        }
         
         public void DoPlayerTurn(int steps)
         {
             var currentPlayerId = playersTurnChanger.GetCurrentPlayerId();
             playersChipsMover.MoveChip(currentPlayerId, steps);
-            playersTurnChanger.MovePlayerTurn();
-        }
+            var isPlayerFinished = playersChipsMover.CheckPlayerFinished(currentPlayerId);
 
-        private void Start()
+            if (isPlayerFinished)
+            {
+                SetWinText(currentPlayerId);
+                EndGame();
+            }
+            else
+            {
+                playersTurnChanger.MovePlayerTurn();
+            }
+        }
+        
+        public void RestartGame()
         {
+            playersChipsCreator.Clear();
+            StartGame();
+        }
+        
+        private void FirstStartGame()
+        {
+            gameField.FillCellsPositions();
             StartGame();
         }
 
         private void StartGame()
         {
-            gameField.FillCellsPositions();
             var playersChips = playersChipsCreator.SpawnPlayersChips(playersCount);
             playersTurnChanger.StartGame(playersChips);
             playersChipsMover.StartGame(playersChips);
+            SetScreens(true);
+        }
+        
+        private void EndGame()
+        {
+            SetScreens(false);
+        }
+        
+        private void SetScreens(bool inGame)
+        {
+            gameScreenGo.SetActive(inGame);
+            gameEndScreenGo.SetActive(!inGame);
+        }
+
+        private void SetWinText(int playerId)
+        {
+            winText.text = $"Игрок {playerId + 1} победил!";
         }
     }
 }

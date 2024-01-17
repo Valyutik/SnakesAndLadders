@@ -30,6 +30,11 @@ namespace PlayForge_Team.SnakesAndLadders.Runtime.Runtime.Chip
 
             RefreshChipPosition(playerId);
         }
+        
+        public bool CheckPlayerFinished(int playerId)
+        {
+            return _playersChipsCellsIds[playerId] >= gameField.CellsCount - 1;
+        }
 
         private void RefreshChipsPositions()
         {
