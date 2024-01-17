@@ -4,7 +4,7 @@ namespace PlayForge_Team.SnakesAndLadders.Runtime.Runtime.GameCubes
 {
     public sealed class GameCube : MonoBehaviour
     {
-        [SerializeField] private Vector3[] cubeSidesEulers;
+        [SerializeField] private Vector3[] cubeSidesEuler;
         
         public void ShowCube()
         {
@@ -24,8 +24,8 @@ namespace PlayForge_Team.SnakesAndLadders.Runtime.Runtime.GameCubes
         public int ThrowCube()
         {
             ShowCube();
-            var randomCubeValue = Random.Range(0, cubeSidesEulers.Length);
-            RotateCube(cubeSidesEulers[randomCubeValue]);
+            var randomCubeValue = Random.Range(0, cubeSidesEuler.Length);
+            RotateCube(cubeSidesEuler[randomCubeValue]);
             return randomCubeValue + 1;
         }
 
