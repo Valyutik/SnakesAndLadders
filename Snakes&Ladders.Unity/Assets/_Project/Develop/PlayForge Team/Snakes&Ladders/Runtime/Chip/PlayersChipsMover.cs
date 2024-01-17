@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using PlayForge_Team.SnakesAndLadders.Runtime.Runtime.Transitions;
+using UnityEngine;
 
 namespace PlayForge_Team.SnakesAndLadders.Runtime.Runtime.Chip
 {
     public sealed class PlayersChipsMover : MonoBehaviour
     {
         [SerializeField] private GameField gameField;
+        [SerializeField] private TransitionSettings transitionSettings;
         private PlayerChip[] _playersChips;
         private int[] _playersChipsCellsIds;
         
@@ -14,8 +16,22 @@ namespace PlayForge_Team.SnakesAndLadders.Runtime.Runtime.Chip
             _playersChipsCellsIds = new int[playersChips.Length];
             RefreshChipsPositions();
         }
+        
+        public void MoveChip(int playerId, int steps)
+        {
+            _playersChipsCellsIds[playerId] += steps;
 
-        public void RefreshChipsPositions()
+            if (_playersChipsCellsIds[playerId] >= gameField.CellsCount)
+            {
+                _playersChipsCellsIds[playerId] = gameField.CellsCount - 1;
+            }
+
+            TryApplyTransition(playerId);
+
+            RefreshChipPosition(playerId);
+        }
+
+        private void RefreshChipsPositions()
         {
             for (var i = 0; i < _playersChips.Length; i++)
             {
@@ -23,14 +39,16 @@ namespace PlayForge_Team.SnakesAndLadders.Runtime.Runtime.Chip
             }
         }
         
-        public void MoveChip(int playerId, int steps)
+        private void TryApplyTransition(int playerId)
         {
-            _playersChipsCellsIds[playerId] += steps;
-            if (_playersChipsCellsIds[playerId] >= gameField.CellsCount)
+            var resultCellId = transitionSettings.GetTransitionResultCellId(_playersChipsCellsIds[playerId]);
+
+            if (resultCellId < 0)
             {
-                _playersChipsCellsIds[playerId] = gameField.CellsCount - 1;
+                return;
             }
-            RefreshChipPosition(playerId);
+
+            _playersChipsCellsIds[playerId] = resultCellId;
         }
 
         private void RefreshChipPosition(int playerId)
