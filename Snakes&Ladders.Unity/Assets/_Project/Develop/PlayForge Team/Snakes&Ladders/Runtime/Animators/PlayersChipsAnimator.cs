@@ -1,7 +1,7 @@
 ﻿using PlayForge_Team.SnakesAndLadders.Runtime.Runtime.Chip;
 using UnityEngine;
 
-namespace PlayForge_Team.SnakesAndLadders.Runtime.Runtime.Animator
+namespace PlayForge_Team.SnakesAndLadders.Runtime.Runtime.Animators
 {
     public sealed class PlayersChipsAnimator : MonoBehaviour
     {

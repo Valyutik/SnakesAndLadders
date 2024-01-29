@@ -1,4 +1,4 @@
-﻿using PlayForge_Team.SnakesAndLadders.Runtime.Runtime.Animator;
+﻿using PlayForge_Team.SnakesAndLadders.Runtime.Runtime.Animators;
 using PlayForge_Team.SnakesAndLadders.Runtime.Runtime.Transitions;
 using UnityEngine;
 

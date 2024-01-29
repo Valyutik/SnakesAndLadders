@@ -1,4 +1,5 @@
-﻿using PlayForge_Team.SnakesAndLadders.Runtime.Runtime.GameCubes;
+﻿using PlayForge_Team.SnakesAndLadders.Runtime.Runtime.Animators;
+using PlayForge_Team.SnakesAndLadders.Runtime.Runtime.GameCubes;
 using UnityEngine;
 
 namespace PlayForge_Team.SnakesAndLadders.Runtime.Runtime
@@ -6,26 +7,30 @@ namespace PlayForge_Team.SnakesAndLadders.Runtime.Runtime
     public sealed class GameCubeThrower : MonoBehaviour
     {
         [SerializeField] private GameStateChanger gameStateChanger;
-        [SerializeField] private Transform gameCubePoint;
+        [SerializeField] private GameCube gameCubePoint;
+        [SerializeField] private CubeThrowAnimator cubeThrowAnimator;
+        private int _cubeValue;
         private GameCube _gameCubePrefab;
-        private GameCube _gameCube;
         
         public void ThrowCube()
         {
-            var cubeValue = _gameCube.ThrowCube();
-            gameStateChanger.DoPlayerTurn(cubeValue);
+            _cubeValue = gameCubePoint.ThrowCube();
+            cubeThrowAnimator.PlayAnimation();
+        }
+        
+        public void ContinueAfterCubeAnimation()
+        {
+            gameStateChanger.DoPlayerTurn(_cubeValue);
         }
 
         private void Start()
         {
-            _gameCubePrefab = Resources.Load<GameCube>("Prefabs/GameCube");
             CreateGameCube();
         }
 
         private void CreateGameCube()
         {
-            _gameCube = Instantiate(_gameCubePrefab, gameCubePoint.position, gameCubePoint.rotation);
-            _gameCube.HideCube();
+            gameCubePoint.HideCube();
         }
     }
 }
