@@ -66,6 +66,7 @@ namespace PlayForge_Team.SnakesAndLadders.Runtime.Runtime
 
         private void StartGame()
         {
+            SetThrowButtonInteractable(true);
             var playersChips = playersChipsCreator.SpawnPlayersChips(playersCount);
             playersTurnChanger.StartGame(playersChips);
             playersChipsMover.StartGame(playersChips);
