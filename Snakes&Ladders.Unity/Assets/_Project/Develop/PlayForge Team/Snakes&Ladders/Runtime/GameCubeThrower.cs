@@ -14,23 +14,12 @@ namespace PlayForge_Team.SnakesAndLadders.Runtime.Runtime
         
         public void ThrowCube()
         {
-            _cubeValue = gameCubePoint.ThrowCube();
             cubeThrowAnimator.PlayAnimation();
         }
         
         public void ContinueAfterCubeAnimation()
         {
-            gameStateChanger.DoPlayerTurn(_cubeValue);
-        }
-
-        private void Start()
-        {
-            CreateGameCube();
-        }
-
-        private void CreateGameCube()
-        {
-            gameCubePoint.HideCube();
+            gameStateChanger.DoPlayerTurn(gameCubePoint.ThrowCube());
         }
     }
 }

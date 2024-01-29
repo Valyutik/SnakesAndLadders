@@ -4,18 +4,17 @@ namespace PlayForge_Team.SnakesAndLadders.Runtime.Runtime.Animators
 {
     public sealed class CubeThrowAnimator : MonoBehaviour
     {
-        private static readonly int Throw = Animator.StringToHash("Throw");
-        
-        [SerializeField] private Animator cubeAnimation;
+        [SerializeField] private Animation cubeAnimation;
         [SerializeField] private GameCubeThrower gameCubeThrower;
 
         public void PlayAnimation()
         {
-            cubeAnimation.SetTrigger(Throw);
+            cubeAnimation.Play();
         }
 
         public void OnAnimationEnd()
         {
+            cubeAnimation.Stop();
             gameCubeThrower.ContinueAfterCubeAnimation();
         }
     }

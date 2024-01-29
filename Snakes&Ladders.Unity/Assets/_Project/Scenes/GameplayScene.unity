@@ -2205,7 +2205,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 90}
   - {x: 0, y: 270, z: 0}
   - {x: 90, y: 0, z: 180}
-  - {x: 0, y: 90, z: 0}
+  - {x: 90, y: 0, z: 0}
 --- !u!33 &199422834660559101
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2550,27 +2550,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6117704412603905947}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &3223418980100856748
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6744686154452013114}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7f8c071de061811418023f4f4bff2ea3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!23 &3376132482759545865
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3138,7 +3117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e72be3a3c88d4b15884c02d01240fbbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeAnimation: {fileID: 3223418980100856748}
+  cubeAnimation: {fileID: 6744686154452013115}
   gameCubeThrower: {fileID: 1103291679}
 --- !u!23 &5832706604977214699
 MeshRenderer:
@@ -3310,7 +3289,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6744686154452013114}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 12, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3338,7 +3317,7 @@ Transform:
   - {fileID: 4796369537226858275}
   - {fileID: 2400308544585553189}
   m_Father: {fileID: 1046230927}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &6117893372305836456
 Transform:
   m_ObjectHideFlags: 0
@@ -3492,8 +3471,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6117704412603905947}
   - component: {fileID: 170515138346795782}
-  - component: {fileID: 3223418980100856748}
   - component: {fileID: 5711034784912659484}
+  - component: {fileID: 6744686154452013115}
   m_Layer: 0
   m_Name: GameCube
   m_TagString: Untagged
@@ -3501,6 +3480,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!111 &6744686154452013115
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6744686154452013114}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 0ec094f4836e61e4b92429fcbad0d86c, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 0ec094f4836e61e4b92429fcbad0d86c, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!4 &6836450610172602658
 Transform:
   m_ObjectHideFlags: 0

@@ -6,24 +6,8 @@ namespace PlayForge_Team.SnakesAndLadders.Runtime.Runtime.GameCubes
     {
         [SerializeField] private Vector3[] cubeSidesEuler;
         
-        public void ShowCube()
-        {
-            SetActiveCube(true);
-        }
-
-        public void HideCube()
-        {
-            SetActiveCube(false);
-        }
-
-        private void SetActiveCube(bool value)
-        {
-            gameObject.SetActive(value);
-        }
-        
         public int ThrowCube()
         {
-            ShowCube();
             var randomCubeValue = Random.Range(0, cubeSidesEuler.Length);
             RotateCube(cubeSidesEuler[randomCubeValue]);
             return randomCubeValue + 1;
